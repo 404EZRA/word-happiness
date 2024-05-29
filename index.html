@@ -1,0 +1,201 @@
+
+<html>  
+<head>  
+<script type="text/javascript" src="app.js">
+    </script>  
+<link rel="stylesheet" href="styles.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body onload=worldhappiness()> 
+
+
+<div>
+<h2 class="section">Final Project: World Happiness</h2>
+<p class="section"><b>Ezra Lu | DSC 106 | Winter 2023</b></p>
+<p class="section">
+    The purpose of this project is to analyze how happiness is correlated for every country in the world as well discover 
+    some possible correlations happiness has with different factors and variables. In this project, we'll be analyzing how 
+    a country/region's happiness score changes through time, area, and other variables.
+</p>
+
+<br>    
+
+<div>
+    <h3 class="section">What does happiness look like on the world map? Are certain continents or areas happier than others?</h3>
+          
+    <div id="vis5">
+        </div>
+        <div id="choropleth_title" class="center_plot"></div>
+        <div id="choropleth" class="center_plot"></div>
+        <div id="choropleth_legend" class="center_plot"></div><br>
+    <p>
+        <b>Story:</b>
+        I wanted to start off this project with a map of all the countries and their happiness scores to see if we can 
+        immediately see any patterns. From this map, we can see that North America, South America, Europe, and Australia 
+        are darker and thus more happy. Meanwhile in Africa and Asia, they tend to be less happy. Antartica has no people 
+        living there so the color is black (as well as other countries I did not have data on).
+    </p>
+    <p>
+        <b>Caption:</b>
+        I decided to use green for the color scheme because maps usually use the color green to represent land masses so I 
+        felt it was most appropriate. Initially, I wanted to use yellow since the color yellow is typically associated 
+        with happiness, but yellow is hard to see on a white background so I settled with green. Not all countries on the 
+        the map had data from my dataset, so I decided to use black to mark those countries as "no data" since black would 
+        be most distinctive to the average person and colorblind people. The 1 mark in this visualization is area, with each 
+        area representing a country. The 1 channel used in this visualization is color, with it encoding the average 
+        happiness score of that country. I decided not to use tooltip on this visualization because I felt like it wasn't 
+        necessary for the reader to know the exact happiness score of each country in order to identify patterns and trends. 
+        I'd rather the reader focus on the general trends they see within the map and tooltip would take away from that. 
+    </p>
+</div>  
+
+<br>
+
+<div>
+<h3 class="section">Which region of the world is the happiest on average?</h3>
+      
+<div id="vis2">
+    </div>
+    <button type="button", id="sort_button">Sort Me!</button>
+    <div id="barchart" class="center_plot">
+    </div><br>
+    <p>
+        <b>Story:</b>
+        I chose to create this visualization because I wanted to have an official list of which regions of the world tend to 
+        be the happiest. As we can see from this bar chart, Australia and New Zealand tend to be the happiest of all regions. 
+        This data could be skewed however since the region of "Australia and New Zealand" only consists of two countries, 
+        unlike other regions that are more likely to have outliers that may lower their average happiness score. To see which 
+        countries this may be, I will create a box plot to view how the data varies for each region. 
+    </p>
+    <p>
+        <b>Caption:</b>
+        The colors I chose were meant to make it easy to distinguish each region from each other and make the chart more visually 
+        appealing. Since there were a lot of regions, I had to repeat some colors (i.e. blue and green) so I made sure that I 
+        used different brightness and saturation so that the shades were distinctive from each other. I also made sure that 
+        all the colors were different luminances for those who have black and white color blindness so at least all the bars 
+        did not look the exact same. There is 1 mark being used which are lines that represent each region. The 2 channels being 
+        used are color and vertical position. Color is meant to encode region and the vertical position is meant to show the 
+        happiness score. I also decided to slightly angle the text on the x-axis so that all the names would be visible since 
+        the region names can be long.
+    </p>
+</div>
+
+<br>
+
+<div>
+    <h3 class="section">How does happiness score vary between different regions? Do some vary more than others? </h3>
+          
+    <div id="vis4">
+        </div>
+        <div id="boxplot" class="center_plot">
+    </div><br>
+    <p>
+        <b>Story:</b>
+        I created this visualization to actually see the spread of happiness scores across all regions. So far, we can see 
+        that "Australia and New Zealand", which was said to have the highest average happiness score in out bar chart, does 
+        have very little variance in its data. In this bar plot, we can see that Western Europe has the country with the 
+        highest happiness score however, since the data varies a lot it has a lower mean happiness score than Australia and 
+        New Zealand. This plot goes to show that mean isn't the greatest way to measure a region's happiness score and it's 
+        important to take into account variations of data.
+    </p>
+    <p>
+        <b>Caption:</b>
+        I used the same colors to represent the different countries from my bar chart. I did this to maintain consistency and 
+        prevent confusion when looking through my project. This visualization has 1 mark represented in lines. The lines are meant 
+        to show the minimum, maximum, median, 1st quartile and 3rd quartiles of happiness scores of each region. There are two 
+        channels: color and vertical length. Colors are meant to encode the region being represented and vertical length is meant 
+        to represent the variance in happiness scores. I also decided to slightly angle the text on the x-axis here as well so 
+        that all the names would be visible since the region names can be long.
+    </p>
+</div>  
+
+<br>
+
+<div id="vis1">
+    <h3 class="section">How does happiness correlate with the different variables? How strong are these relationships?</h3>
+    
+    <div id="radio_vis1" class="center_plot">
+        <input type="radio" id="economy" name="variable" value="Economy (GDP per Capita)" checked="checked">
+        <label for="economy">Economy</label>
+        <input type="radio" id="family" name="variable" value="Family">
+        <label for="family">Family</label>
+        <input type="radio" id="health" name="variable" value="Health (Life Expectancy)">
+        <label for="health">Health</label>
+        <input type="radio" id="freedom" name="variable" value="Freedom">
+        <label for="freedom">Freedom</label>
+        <input type="radio" id="trust" name="variable" value="Trust (Government Corruption)">
+        <label for="trust">Trust</label>
+        <input type="radio" id="generosity" name="variable" value="Generosity">
+        <label for="generosity">Generosity</label>
+
+    </div>
+    <div id="checkbox_vis1" class="center_plot">
+        <input type="checkbox" id="2015" name="year" value="2015" checked="checked">
+        <label for="2015">2015</label>
+        <input type="checkbox" id="2016" name="year" value="2016" checked="checked">
+        <label for="2016">2016</label>
+        <input type="checkbox" id="2017" name="year" value="2017" checked="checked">
+        <label for="2017">2017</label>
+        <input type="checkbox" id="2018" name="year" value="2018" checked="checked">
+        <label for="2018">2018</label>
+        <input type="checkbox" id="2019" name="year" value="2019" checked="checked">
+        <label for="2019">2019</label>
+    </div>
+    <div id="scatterplot" class="center_plot">
+    </div><br>
+    <p>
+        <b>Story:</b>
+        The reason why I wanted to create this visual was because I wanted to see if there were any strong correlations 
+        between each variable and Happiness Score. Based on this graph, we can see that Economy, Family, and Health have 
+        strong positive correlations with Happiness Score. Freedom also has a pretty distinct positive relationsihp with 
+        Happiness Score but it's not as strong as the previous 3 variables. Trust and Generosity don't seem to have a strong 
+        relationship with Happiness Score, as the data points appear fairly varied regardless of Happiness Score. I also 
+        wanted to note that in later years (2017-2019), Family and Health seemed to have improved compared to previous years.
+    </p>
+    <p>
+        <b>Caption:</b>
+        The colors I chose for the scatterplot are meant to represent the different years the data came from. 
+        I chose these colors because they contrast very well together, so it is easier to see trends between different
+        years as you flip through the different variables. Ideally, I wouldn't want to use this many colors since it's not 
+        very accessible to those who are colorblind, but the reason why I wanted to distinguish each data point by the year 
+        is because I wanted to see if there was any distinct patterns or changes that occur through the years. There is 1 
+        mark on this plot with each point representing a country. There are 3 channels being used: color, vertical position, and 
+        horizontal position. The color represents the year the data point came from. Vertical position represents the score 
+        from each variable (i.e. Economy, Family, etc.). Horizontal position represents the happiness score of each country. 
+    </p>
+</div>
+
+<br>
+
+<div>
+    <h3 class="section">Across all regions, how has the happiness changed overtime between 2015 and 2019?</h3>
+          
+    <div id="vis3">
+        </div>
+        <div id="heatmap" class="center_plot">
+    </div><br>
+    <p>
+        <b>Story:</b>
+        In addition to finding possible correlations with different variables (i.e. Family, Economy, etc.), I wanted to see 
+        how time affected each region's happiness score. Based on this heatmap, it doesn't seem to be a distinct correlation 
+        between the years and average happiness scores. There are some changes but no discernible pattern. 
+    </p>
+    <p>
+        <b>Caption:</b>
+        I chose green again for the color palette because I wanted it to match the colors with the choropleth for the sake 
+        of consistency since in both plots, the color green is meant to represent average happiness score. The 1 mark being 
+        used in this visualization is area. The area is meant to represent a region during a certain 
+        year. The 2 channels being used are color and horizontal position. Color encodes the average happiness score of a 
+        region during that year with white being for smaller happiness scores and dark green for larger happiness scores. 
+        Horizontal position represents the years over time in chronological order. When chosing the scale for this heatmap, 
+        I decided to use minimum and maximum instead of 0 and maximum because I wanted to make sure the colors can be 
+        discernible from each other as much as possible since there is very little difference over time for each region. It 
+        is also why I decided to use tooltips on this visualization since the differences in color were so minimal. 
+    </p>
+</div>
+
+    
+</div>   
+</body>  
+</html>  
